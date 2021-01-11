@@ -1,2 +1,1 @@
-# kapusta-uajs.github.io
-JavaScript QAlights lessons
+# Java Script g21
