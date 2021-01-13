@@ -1,34 +1,16 @@
-// comment
+'use strict';
 
-'use strictly';
+const shoppingCart = document.getElementById('shopping-cart');
+const aside = document.querySelector('.aside');
 
-let a = Number(prompt('Enter a: ', ' '));
-let b = Number(prompt('Enter b: ', ' '));
+const closeBtn = document.querySelector('.close-btn');
 
-let key = prompt('Enter operation: ', ' ');
+let toggleCart = function(){
+    aside.classList.toggle('show-sidebar');
+};
 
-switch (key) {
-    case '+':
-        alert(a+b)
-        break;
+shoppingCart.addEventListener('click', toggleCart);
 
-    case '-':
-        alert(a-b)
-        break;
-
-    case '/':
-        alert(a/b)
-        break;
-        
-    case '*':
-        alert(a*b)
-        break;
-
-    case '%':
-        alert(a%b)
-        break;
-
-    default:  
-    alert('Wrong operation')
-    break;
-}
+closeBtn.addEventListener('click', function(){
+    aside.classList.remove('show-sidebar');
+})
