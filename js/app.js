@@ -1,16 +1,19 @@
-'use strict';
+const aside = document.querySelector(".aside");
+const sidebarToggle = document.querySelector(".sidebar-toggle");
+const closeBtn = document.querySelector(".close-btn");
+const clearCart = document.querySelector(".clear-cart");
 
-const shoppingCart = document.getElementById('shopping-cart');
-const aside = document.querySelector('.aside');
+function init(){
+    closeBtn.addEventListener("click", closeCart);
+    sidebarToggle.addEventListener("click", toggleCart);
+}
 
-const closeBtn = document.querySelector('.close-btn');
+function toggleCart() {
+    aside.classList.toggle("show-sidebar");
+}
 
-let toggleCart = function(){
-    aside.classList.toggle('show-sidebar');
-};
+function closeCart() {
+    aside.classList.remove("show-sidebar");
+}
 
-shoppingCart.addEventListener('click', toggleCart);
-
-closeBtn.addEventListener('click', function(){
-    aside.classList.remove('show-sidebar');
-})
+document.addEventListener("DOMContentLoaded", init);
