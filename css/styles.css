@@ -285,7 +285,7 @@ nav {
     top: 60px;
     background-color: white;
     height: auto;
-    z-index: 10;
+    z-index: 100;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -380,9 +380,10 @@ nav {
     background-color: transparent;
     text-align: center;
     font-family: inherit;
-    font-size: 1rem;
+    font-size: 1em;
     font-weight: 400;
     line-height: 1.5;
+    cursor: pointer;
 }
 
 .btn:hover {
@@ -394,6 +395,8 @@ nav {
     color: #fff;
     background-color: #111111;
     border-color: #343a40;
+    border-radius: 5px;
+    padding: 0.2em 0.4em;
 }
 
 .btn-dark:hover {
@@ -1014,6 +1017,9 @@ nav {
 .product img {
     filter: grayscale(40%);
     transition: all 0.3s;
+    object-fit: cover;
+    max-width: 100%;
+    margin: auto;
 }
   
 .product-overlay {
@@ -1235,8 +1241,6 @@ nav {
 }
   
 .carousel-item img {
-    /* width: 250px;
-    height: 100px; */
     object-fit: cover;
 }
 /* category */
@@ -1514,7 +1518,7 @@ nav {
     
 }
 
-.show-sidebar {
+.show {
     transform: translate(0);
 }
 
@@ -1581,3 +1585,189 @@ nav {
   .inc-dec-btn, .amount{
   padding: 0.5rem 1rem;
   }
+
+
+/* Product Detail */
+@keyframes openBox {
+    0% {
+      width: 0px;
+    }
+    100% {
+      width: 80%;
+    }
+}
+@keyframes fadeImg {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+@keyframes upProduct {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+@keyframes showDescription {
+    0% {
+      width: 0px;
+    }
+    100% {
+      width: 80%;
+    }
+}
+@keyframes fadeContent {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+@keyframes fadeWish {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+@keyframes fadeBuy {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+
+.single{
+    position: fixed;
+    top: 65px;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    background: white;
+    transition: all 1s linear;
+    transform: translateX(-200%);
+    z-index: 10;
+    overflow-y: scroll;
+    padding-bottom: 2em;
+}
+
+.show-single{
+    transform: translateX(0%);
+}
+
+.detail{
+    width: 0%;
+    height: auto;
+    background: #f6f6f6;
+    display: grid;
+    margin: auto;
+    grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+    grid-template-rows: repeat(auto-fit, 1fr);
+    grid-gap: 0.7em;
+    animation: openBox 4s var(--bezier) forwards;
+    padding-bottom: 6em;
+}
+
+.detail .product__img {
+    opacity: 0;
+    animation: fadeImg 1s ease-in-out forwards;
+    animation-delay: 1s;
+}
+
+.detail .product__img img{
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.detail .go-back {
+    display: flex;
+    /* padding-left: 2em; */
+    padding-top: 2em;
+    height: 100px;
+    animation: upProduct 1s var(--bezier) forwards;
+    animation-delay: 1.2s;
+    opacity: 0;
+}
+
+.detail .go-back i {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #F71568;
+    border: 2px solid #F71568;
+    transition: ease-in-out 220ms;
+    cursor: pointer;
+}
+
+.detail .go-back i:hover {
+    background: #F71568;
+    color: #fff;
+}
+
+.detail .go-back span {
+    display: inline-block;
+    margin-left: 1em;
+  }
+
+.detail .product__description {
+    width: 0px;
+    background: #FFCA1B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2em;
+    animation: showDescription 1s var(--bezier) forwards;
+  }
+.detail .product__description--content {
+    animation: fadeContent 1s ease-in-out forwards;
+    animation-delay: 1s;
+    opacity: 0;
+    padding: 1em 2em;
+}
+  
+.detail h1 {
+    font-size: 2.2rem;
+}
+  
+.detail .product_buttons {
+    display: flex;
+    height: 100px;
+}
+.detail .product_buttons .btn {
+    width: 40%;
+    height: 70%;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: ease-in-out 220ms;
+    cursor: pointer;
+}
+.detail .product_buttons .wishlist {
+    border: 2px solid #F71568;
+    background: transparent;
+    color: #F71568;
+    opacity: 0;
+    animation: fadeWish 1s var(--bezier) forwards;
+    animation-delay: 1s;
+}
+.detail .product_buttons .wishlist:hover {
+    background: #F71568;
+    color: #FFF;
+}
+.detail .product_buttons .buy {
+    border: none;
+    background: #F71568;
+    color: #FFF;
+    opacity: 0;
+    animation: fadeBuy 1s var(--bezier) forwards;
+    animation-delay: 1s;
+}
